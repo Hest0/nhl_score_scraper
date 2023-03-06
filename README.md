@@ -1,2 +1,2 @@
 # nhl_score_scraper
-Python script to parse nhl data
+Python script to scrape nhl data
