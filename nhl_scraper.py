@@ -23,3 +23,21 @@ rows = soup.select('tr.fin td:nth-of-type(10):not(:-soup-contains("0"))')
 
 #create a list to store the stats
 stats = []
+
+#loop through players with points
+for row in rows:
+    
+    name = row.select_one('td.player-name > a').text
+
+    #get goals and assists
+    goals = row.select_one('td:nth-of-type(5)').text
+    assists = row.select_one('td:nth-of-type(6)').text
+
+    #add the stats to the list 'stats'
+    stats.append([date_str, name, goals, assists])
+
+#save stats to CSV file
+with open(filename, 'a', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(['date', 'name', 'goals', 'assists'])
+    writer.writerows(stats)
