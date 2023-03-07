@@ -41,3 +41,7 @@ with open(filename, 'a', newline='') as f:
     writer = csv.writer(f)
     writer.writerow(['date', 'name', 'goals', 'assists'])
     writer.writerows(stats)
+
+#open the CSV file
+import subprocess
+subprocess.call(['open', '-a', 'Numbers', filename])
